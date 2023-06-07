@@ -1,0 +1,28 @@
+﻿/* ------------------------------------------------------------------------------------------------------------------
+   CSS Produkt- & Attributlagerampel v1.1(2023-06-06)
+   
+   Authors:
+   -------------------
+     awids (www.awids.de)
+     web28 (www.rpa-com.de)
+     noRiddle (www.revilonetz.de)
+     
+   ----------------------------------------------------------------------------------------------------------------*/
+
+.productoptions{overflow:hidden;}
+.options_row_selection .options_selection label {position:relative;}
+.options_selection_price {text-align:right;}
+.options_row_selection .options_selection label .label_row2 {display:block !important;}
+.traff-light {float:right;clear:both;}
+.options_row_selection .options_selection label .label_row2 .traff-light {padding-right:2px; font-style:normal;}
+.options_row_selection .options_selection label .label_row1 .options_selection_price {padding-right:2px;}
+.tl {display:inline-block; margin:0 2px; width:9px; height:9px; border-radius:25%;}
+.red-tl {background:#A20000;border:1px solid #333;}
+.yell-tl {background:yellow;border:1px solid #333;}
+.green-tl {background:#116C10;border:1px solid #333;}
+.zero-tl {background:#eee;border:1px solid #333;}
+.red-txt {color:#A20000;}
+.green-txt {color:#116C10;}
+.yell-txt {color:#333333 !important;}
+.options_row_selection .options_selection label .nr-tooltip {position:absolute;top:45%;right:90%;visibilty:hidden;font-size:12px;color:#fff;padding:0 5px;border-radius:5px;white-space:nowrap;opacity:0;z-index:1;transition:right 0.6s ease 0.1s, opacity 1s ease 0.1s;}
+html:not(.touch) .options_row_selection .options_selection label:hover .nr-tooltip {right:30%;visibilty:visible;opacity:1;}
