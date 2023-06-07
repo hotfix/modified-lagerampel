@@ -36,7 +36,7 @@
      
      
      
-   # JAVASCRIPT
+   # JAVASCRIPT - optional, wenn kein /extra/-Ordner vorhanden!!!
    
    Öffnen Sie die Datei /templates/tpl_modified/javascript/general_bottom.js.php und suchen folgenden Eintrag:
 
