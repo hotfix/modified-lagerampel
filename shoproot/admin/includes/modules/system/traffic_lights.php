@@ -2,7 +2,7 @@
 /* ------------------------------------------------------------------------------------------------------------------
    $Id: traffic_lights.php
    
-   CSS Produkt- & Attributlagerampel v1.1(2023-06-06)
+   CSS Produkt- & Attributlagerampel v1.2 (2023-06-16)
   
    Authors:
    -------------------

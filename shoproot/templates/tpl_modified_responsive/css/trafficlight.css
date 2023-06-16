@@ -1,5 +1,5 @@
 ﻿/* ------------------------------------------------------------------------------------------------------------------
-   CSS Produkt- & Attributlagerampel v1.1(2023-06-06)
+   CSS Produkt- & Attributlagerampel v1.2 (2023-06-16)
    
    Authors:
    -------------------
@@ -9,7 +9,6 @@
      
    ----------------------------------------------------------------------------------------------------------------*/
 
-.productoptions{overflow:hidden;}
 .options_row_selection .options_selection label {position:relative;}
 .options_selection_price {text-align:right;}
 .options_row_selection .options_selection label .label_row2 {display:block !important;}

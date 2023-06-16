@@ -1,6 +1,6 @@
 <?php
 /* ------------------------------------------------------------------------------------------------------------------
-   CSS Produkt- & Attributlagerampel v1.1(2023-06-06)
+   CSS Produkt- & Attributlagerampel v1.2 (2023-06-16)
    
    Authors:
    -------------------
@@ -13,7 +13,7 @@
 // titles
 define('MODULE_TRAFFIC_LIGHTS_STATUS_TITLE','Status');
 define('MODULE_TRAFFIC_LIGHTS_TEXT_BTN', 'Bearbeiten');
-define('MODULE_TRAFFIC_LIGHTS_TEXT_TITLE', 'CSS Produkt- & Attributlagerampel v1.1 (2023-06-06)');
+define('MODULE_TRAFFIC_LIGHTS_TEXT_TITLE', 'CSS Produkt- & Attributlagerampel v1.2 (2023-06-16)');
 define('MODULE_TRAFFIC_LIGHTS_LISTING_TITLE','Lagerampel im Produktlisting');
 define('MODULE_TRAFFIC_LIGHTS_LISTING_LIGHT_TITLE','Art der Anzeige');
 define('MODULE_TRAFFIC_LIGHTS_INFO_TITLE','Lagerampel auf der Produktdetailseite');
