@@ -19,7 +19,9 @@
    ----------------------------------------------------------------------------------------------------------------*/
 
 function smarty_function_traffic_light($params, &$smarty) {
-  
+
+  $html = '';
+   
   $modul = isset($params['modul']) ? $params['modul'] : '';
   
   if (defined('MODULE_TRAFFIC_LIGHTS_STATUS') && MODULE_TRAFFIC_LIGHTS_STATUS == 'true') {
