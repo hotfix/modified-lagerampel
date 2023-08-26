@@ -1,6 +1,6 @@
 <?php
 /* ------------------------------------------------------------------------------------------------------------------
-   CSS Produkt- & Attributlagerampel v1.2 (2023-06-16)
+   CSS Produkt- & Attributlagerampel v1.3 (2023-08-26)
    
    Authors:
    -------------------
@@ -13,12 +13,14 @@
 // titles
 define('MODULE_TRAFFIC_LIGHTS_STATUS_TITLE','Status');
 define('MODULE_TRAFFIC_LIGHTS_TEXT_BTN', 'Bearbeiten');
-define('MODULE_TRAFFIC_LIGHTS_TEXT_TITLE', 'CSS Produkt- & Attributlagerampel v1.2 (2023-06-16)');
+define('MODULE_TRAFFIC_LIGHTS_TEXT_TITLE', 'CSS Produkt- & Attributlagerampel v1.3 (2023-08-26)');
 define('MODULE_TRAFFIC_LIGHTS_LISTING_TITLE','Lagerampel im Produktlisting');
 define('MODULE_TRAFFIC_LIGHTS_LISTING_LIGHT_TITLE','Art der Anzeige');
 define('MODULE_TRAFFIC_LIGHTS_INFO_TITLE','Lagerampel auf der Produktdetailseite');
 define('MODULE_TRAFFIC_LIGHTS_INFO_LIGHT_TITLE','Art der Anzeige');
 define('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_TITLE','Lagerampel f&uuml;r Attribute auf Produktdetailseite');
+define('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_FLOW_IN_TITLE','Hover-Effekt bei Attributen');
+define('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_SHOW_STOCK_TITLE','Attributs-Lagerbest&auml;nde');
 define('MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL_TITLE','Minimum-Wert Lagerampel');
 define('MODULE_TRAFFIC_LIGHTS_STOCK_GREEN_TITLE','Maximum-Wert Lagerampel');
 
@@ -30,6 +32,8 @@ define('MODULE_TRAFFIC_LIGHTS_LISTING_LIGHT_DESC','Wie soll die Lagerampel im Pr
 define('MODULE_TRAFFIC_LIGHTS_INFO_DESC','Soll die Lagerampel auf der Produktdetailseite angezeigt werden?');
 define('MODULE_TRAFFIC_LIGHTS_INFO_LIGHT_DESC','Wie soll die Lagerampel auf der Produktdetailseite angezeigt werden?<br><ul><li>light: grafische Lagerampel</li><li>text: Text-Lagerampel mit Lagerbest&auml;nden</li></ul>');
 define('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_DESC','Soll die Lagerampel auf der Produktdetailseite auch f&uuml;r Attribute aktiviert werden?');
+define('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_FLOW_IN_DESC','Bei aktivierter Einstellung wird ein sogenannter &quot;flow-in&quot; mit einem Infotext zum Lagerstatus eingeblendet. Bleibt die Einstellung deaktiviert, bekommt der Kunde ausschlie&szlig;lich die grafische Ampel zu sehen.');
+define('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_SHOW_STOCK_DESC','Sollen die jeweiligen Attributs-Lagerbest&auml;nde beim &quot;flow-in&quot; mit angezeigt werden?');
 define('MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL_DESC','Geben Sie hier den Minimum-Wert f&uuml;r die gelbe Ampel ein. Alle Werte darunter werden mit einer roten Ampel versehen.');
 define('MODULE_TRAFFIC_LIGHTS_STOCK_GREEN_DESC','Geben Sie hier den Wert ein, ab dem eine gr&uuml;ne Ampel anzeigt werden soll. Alle Werte darunter bis zum Minimum-Wert werden mit einer gelben Ampel versehen.');
 

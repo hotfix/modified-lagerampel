@@ -1,5 +1,5 @@
 ﻿/* ------------------------------------------------------------------------------------------------------------------
-   CSS Produkt- & Attributlagerampel v1.2 (2023-06-16)
+   CSS Produkt- & Attributlagerampel v1.3 (2023-08-26)
    
    Authors:
    -------------------
@@ -81,7 +81,7 @@
 	
 	   folgendes ein:
 	   
-	        {if !isset($MODULE_product_options) && $MODULE_product_options == ''}<div class="pd_inforow">{traffic_light stock=$PRODUCTS_QUANTITY modul='info'}</div>{/if}
+	        {if !isset($MODULE_product_options) || $MODULE_product_options == ''}<div class="pd_inforow">{traffic_light stock=$PRODUCTS_QUANTITY modul='info'}</div>{/if}
    
    
    b) Produktlisting / Product listing

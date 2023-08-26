@@ -2,7 +2,7 @@
 /* ------------------------------------------------------------------------------------------------------------------
    $Id: traffic_lights.php
    
-   CSS Produkt- & Attributlagerampel v1.2 (2023-06-16)
+   CSS Produkt- & Attributlagerampel v1.3 (2023-08-26)
   
    Authors:
    -------------------
@@ -23,7 +23,7 @@ if (!class_exists('traffic_lights')) {
             $this->code = 'traffic_lights';
             $this->properties['process_key'] = true;
             $this->properties['btn_edit'] = MODULE_TRAFFIC_LIGHTS_TEXT_BTN;
-            $this->title = defined('MODULE_TRAFFIC_LIGHTS_TEXT_TITLE') ? MODULE_TRAFFIC_LIGHTS_TEXT_TITLE : 'CSS Produkt- & Attributlagerampel v1.1 (ab Shopversion 2.x.x.x)';
+            $this->title = defined('MODULE_TRAFFIC_LIGHTS_TEXT_TITLE') ? MODULE_TRAFFIC_LIGHTS_TEXT_TITLE : 'CSS Produkt- & Attributlagerampel v1.3 (ab Shopversion 2.x.x.x)';
             $this->description = defined('MODULE_TRAFFIC_LIGHTS_TEXT_DESCRIPTION') ? MODULE_TRAFFIC_LIGHTS_TEXT_DESCRIPTION : 'Lagerampel f&uuml;r Artikel und Attribute';
             $this->enabled = ((defined('MODULE_TRAFFIC_LIGHTS_STATUS') && MODULE_TRAFFIC_LIGHTS_STATUS == 'true') ? true : false);
         }
@@ -40,7 +40,7 @@ if (!class_exists('traffic_lights')) {
 
         function check() {
             if(!isset($this->_check)) {
-              $check_query = xtc_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_TRAFFIC_LIGHTS_STATUS'");
+              $check_query = xtc_db_query("SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_TRAFFIC_LIGHTS_STATUS'");
               $this->_check = xtc_db_num_rows($check_query);
             }
             return $this->_check;
@@ -51,18 +51,29 @@ if (!class_exists('traffic_lights')) {
 			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_LISTING', 'true',  '6', '2', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
 			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_LISTING_LIGHT', 'light',  '6', '3', 'xtc_cfg_select_option(array(\'light\', \'text\'), ', now())");
 			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_INFO', 'true',  '6', '4', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
-			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_INFO_LIGHT', 'light',  '6', '6', 'xtc_cfg_select_option(array(\'light\', \'text\'), ', now())");
-			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES', 'true',  '6', '5', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_INFO_LIGHT', 'light',  '6', '5', 'xtc_cfg_select_option(array(\'light\', \'text\'), ', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES', 'true',  '6', '6', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_FLOW_IN', 'true',  '6', '7', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_SHOW_STOCK', 'true',  '6', '8', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
 			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL', '2',  '6', '21', '', now())");
 			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_STOCK_GREEN', '5',  '6', '22', '', now())");
         }
 
         function remove() {
-            xtc_db_query("delete from " . TABLE_CONFIGURATION . " where configuration_key LIKE 'MODULE_TRAFFIC_LIGHTS_%'");
+            xtc_db_query("DELETE from " . TABLE_CONFIGURATION . " WHERE configuration_key LIKE 'MODULE_TRAFFIC_LIGHTS_%'");
         }
 
         function keys() {
-            return array('MODULE_TRAFFIC_LIGHTS_STATUS','MODULE_TRAFFIC_LIGHTS_LISTING','MODULE_TRAFFIC_LIGHTS_LISTING_LIGHT','MODULE_TRAFFIC_LIGHTS_INFO','MODULE_TRAFFIC_LIGHTS_INFO_LIGHT','MODULE_TRAFFIC_LIGHTS_ATTRIBUTES','MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL','MODULE_TRAFFIC_LIGHTS_STOCK_GREEN');
+            return array('MODULE_TRAFFIC_LIGHTS_STATUS',
+            			 'MODULE_TRAFFIC_LIGHTS_LISTING',
+            			 'MODULE_TRAFFIC_LIGHTS_LISTING_LIGHT',
+            			 'MODULE_TRAFFIC_LIGHTS_INFO',
+            			 'MODULE_TRAFFIC_LIGHTS_INFO_LIGHT',
+            			 'MODULE_TRAFFIC_LIGHTS_ATTRIBUTES',
+            			 'MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_FLOW_IN',
+            			 'MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_SHOW_STOCK',
+            			 'MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL',
+            			 'MODULE_TRAFFIC_LIGHTS_STOCK_GREEN');
         }
         
     }

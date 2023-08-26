@@ -2,7 +2,7 @@
 /* ------------------------------------------------------------------------------------------------------------------
    $Id: function.traffic_light.php
    
-   CSS Produkt- & Attributlagerampel v1.2 (2023-06-16)
+   CSS Produkt- & Attributlagerampel v1.3 (2023-08-26)
   
    Authors:
    -------------------
@@ -20,6 +20,7 @@
 
 function smarty_function_traffic_light($params, &$smarty) {
   
+  $html = '';
   $modul = isset($params['modul']) ? $params['modul'] : '';
   
   if (defined('MODULE_TRAFFIC_LIGHTS_STATUS') && MODULE_TRAFFIC_LIGHTS_STATUS == 'true') {
@@ -27,19 +28,21 @@ function smarty_function_traffic_light($params, &$smarty) {
     if (constant('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES') == 'true' && $modul == 'attributes') {
 
       $stock = isset($params['stock']) ? $params['stock'] : false;
+      $flow_in = defined('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_FLOW_IN') && MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_FLOW_IN == 'true' ? true : false;
+      $show_stock = defined('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_SHOW_STOCK') && MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_SHOW_STOCK == 'true' ? ' | '.$stock : '';
   	  
       if ($stock === false) {
         return false;
       }
       
       if ($stock < MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL) {
-          $stock_info = '<span class="traff-light"><strong>'.MODULE_TRAFFIC_LIGHTS_STOCK.':</strong> <span class="tl zero-tl"></span><span class="tl zero-tl"></span><span class="tl red-tl"></span><span class="nr-tooltip red-tl" aria-label="'.MODULE_TRAFFIC_LIGHTS_STOCK.'">'.MODULE_TRAFFIC_LIGHTS_QTY_RED.' | '.$stock.'</span></span>';
+          $stock_info = '<span class="traff-light"><strong>'.MODULE_TRAFFIC_LIGHTS_STOCK.':</strong> <span class="tl zero-tl"></span><span class="tl zero-tl"></span><span class="tl red-tl"></span>'.(($flow_in == true) ? '<span class="nr-tooltip red-tl" aria-label="'.MODULE_TRAFFIC_LIGHTS_STOCK.'">'.MODULE_TRAFFIC_LIGHTS_QTY_RED.$show_stock.'</span>' : '').'</span>';
           $html .= $stock_info;
       } elseif ($stock >= MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL && $stock < MODULE_TRAFFIC_LIGHTS_STOCK_GREEN) {
-          $stock_info = '<span class="traff-light"><strong>'.MODULE_TRAFFIC_LIGHTS_STOCK.':</strong> <span class="tl zero-tl"></span><span class="tl yell-tl"></span><span class="tl zero-tl"></span><span class="nr-tooltip yell-tl yell-txt" aria-label="'.MODULE_TRAFFIC_LIGHTS_STOCK.'">'.MODULE_TRAFFIC_LIGHTS_QTY_YELL.' | '.$stock.'</span></span>';
+          $stock_info = '<span class="traff-light"><strong>'.MODULE_TRAFFIC_LIGHTS_STOCK.':</strong> <span class="tl zero-tl"></span><span class="tl yell-tl"></span><span class="tl zero-tl"></span>'.(($flow_in == true) ? '<span class="nr-tooltip yell-tl yell-txt" aria-label="'.MODULE_TRAFFIC_LIGHTS_STOCK.'">'.MODULE_TRAFFIC_LIGHTS_QTY_YELL.$show_stock.'</span>' : '').'</span>';
           $html .= $stock_info;
       } elseif ($stock >= MODULE_TRAFFIC_LIGHTS_STOCK_GREEN) {
-          $stock_info = '<span class="traff-light"><strong>'.MODULE_TRAFFIC_LIGHTS_STOCK.':</strong> <span class="tl green-tl"></span><span class="tl zero-tl"></span><span class="tl zero-tl"></span><span class="nr-tooltip green-tl" aria-label="'.MODULE_TRAFFIC_LIGHTS_STOCK.'">'.MODULE_TRAFFIC_LIGHTS_QTY_GREEN.' | '.$stock.'</span></span>';
+          $stock_info = '<span class="traff-light"><strong>'.MODULE_TRAFFIC_LIGHTS_STOCK.':</strong> <span class="tl green-tl"></span><span class="tl zero-tl"></span><span class="tl zero-tl"></span>'.(($flow_in == true) ? '<span class="nr-tooltip green-tl" aria-label="'.MODULE_TRAFFIC_LIGHTS_STOCK.'">'.MODULE_TRAFFIC_LIGHTS_QTY_GREEN.$show_stock.'</span>' : '').'</span>';
           $html .= $stock_info;
       }
       
