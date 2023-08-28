@@ -26,6 +26,7 @@ if (!class_exists('traffic_lights')) {
             $this->title = defined('MODULE_TRAFFIC_LIGHTS_TEXT_TITLE') ? MODULE_TRAFFIC_LIGHTS_TEXT_TITLE : 'CSS Produkt- & Attributlagerampel v1.3 (ab Shopversion 2.x.x.x)';
             $this->description = defined('MODULE_TRAFFIC_LIGHTS_TEXT_DESCRIPTION') ? MODULE_TRAFFIC_LIGHTS_TEXT_DESCRIPTION : 'Lagerampel f&uuml;r Artikel und Attribute';
             $this->enabled = ((defined('MODULE_TRAFFIC_LIGHTS_STATUS') && MODULE_TRAFFIC_LIGHTS_STATUS == 'true') ? true : false);
+            $this->sort_order = defined('MODULE_TRAFFIC_LIGHTS_SORT_ORDER') ? MODULE_TRAFFIC_LIGHTS_SORT_ORDER : 0;
         }
 
         function process($file) {
