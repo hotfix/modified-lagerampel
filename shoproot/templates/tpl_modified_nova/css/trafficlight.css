@@ -1,0 +1,40 @@
+﻿/* ------------------------------------------------------------------------------------------------------------------
+   CSS Produkt- & Attributlagerampel v1.4 (2023-12-13)
+   
+   Authors:
+   -------------------
+     awids (www.awids.de)
+     web28 (www.rpa-com.de)
+     noRiddle (www.revilonetz.de)
+     
+   ----------------------------------------------------------------------------------------------------------------*/
+
+.tl {display:inline-block; margin:0 2px; width:9px; height:9px; border-radius:25%; border:1px solid #777;}
+.red-tl {background:#A20000; border:1px solid #777;}
+.yell-tl {background:yellow; border:1px solid #777;}
+.green-tl {background:#31c92e; border:1px solid #777;}
+.zero-tl {background:#eee; border:1px solid #777;}
+.red-txt {color:#A20000;}
+.green-txt {color:#31c92e;}
+.yell-txt {color:#333333 !important;}
+
+.po_row_table_label {position:relative;}
+.po_row_table_label .nr-tooltip {
+  position:absolute;
+  top:0%;
+  left:90%;
+  visibilty:hidden;
+  font-size:12px;
+  color:#fff;
+  padding:0 5px;
+  border-radius:5px;
+  white-space:nowrap;
+  opacity:0;
+  z-index:1;
+  transition:left 0.6s ease 0.1s, opacity 1s ease 0.1s;
+}
+html:not(.touch) .po_row_table_item:hover .po_row_table_label .traff-light .nr-tooltip {
+  left:30%;
+  visibilty:visible;
+  opacity:1;
+}

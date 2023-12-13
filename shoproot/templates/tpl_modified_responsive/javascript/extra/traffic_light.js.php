@@ -2,7 +2,7 @@
 /* ------------------------------------------------------------------------------------------------------------------
    $Id: traffic_light.js.php (path: /templates/tpl_modified_responsive/javascript/extra/)
    
-   CSS Produkt- & Attributlagerampel v1.3 (2023-08-26)
+   CSS Produkt- & Attributlagerampel v1.4 (2023-12-13)
   
    Authors:
    -------------------
