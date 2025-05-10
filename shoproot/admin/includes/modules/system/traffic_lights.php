@@ -17,17 +17,17 @@ defined( '_VALID_XTC' ) or die( 'Direct Access to this location is not allowed.'
 if (!class_exists('traffic_lights')) {
     class traffic_lights
     {
-        public string $code;
+        public string $code = 'traffic_lights';
         public string $title;
         public string $description;
         public bool $enabled;
         public int|string $sort_order; // kann Zahl oder String sein (aus Konfiguration)
-        public array $properties = [];
+        public array $properties ;
 
-        private int _check;
+        private int|bool|null $_check = null;
 
         public function __construct() {
-            $this->code = 'traffic_lights';
+            
             $this->properties['process_key'] = true;
             $this->properties['btn_edit'] = MODULE_TRAFFIC_LIGHTS_TEXT_BTN;
 
@@ -57,40 +57,30 @@ if (!class_exists('traffic_lights')) {
             ];
         }
 
-        public function check(): int {
-            if (!isset($this->_check)) {
-                $check_query = xtc_db_query(
-                    "SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_TRAFFIC_LIGHTS_STATUS'"
-                );
-                $this->_check = xtc_db_num_rows($check_query);
+        public function check(): int|bool {
+            if ($this->_check === null) {
+                if (defined('MODULE_TRAFFIC_LIGHTS_STATUS')) {
+                    $this->_check = true;
+                } else {
+                    $check_query = xtc_db_query("SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = 'MODULE_TRAFFIC_LIGHTS_STATUS'");
+                    $this->_check = xtc_db_num_rows($check_query);
+                }
             }
             return $this->_check;
         }
 
         public function install(): void
         {
-            $group_id = 6;
-
-            $configs = [
-                ['MODULE_TRAFFIC_LIGHTS_STATUS', 'true', '1', 'xtc_cfg_select_option(array(\'true\', \'false\'), '],
-                ['MODULE_TRAFFIC_LIGHTS_LISTING', 'true', '2', 'xtc_cfg_select_option(array(\'true\', \'false\'), '],
-                ['MODULE_TRAFFIC_LIGHTS_LISTING_LIGHT', 'light', '3', 'xtc_cfg_select_option(array(\'light\', \'text\'), '],
-                ['MODULE_TRAFFIC_LIGHTS_INFO', 'true', '4', 'xtc_cfg_select_option(array(\'true\', \'false\'), '],
-                ['MODULE_TRAFFIC_LIGHTS_INFO_LIGHT', 'light', '5', 'xtc_cfg_select_option(array(\'light\', \'text\'), '],
-                ['MODULE_TRAFFIC_LIGHTS_ATTRIBUTES', 'true', '6', 'xtc_cfg_select_option(array(\'true\', \'false\'), '],
-                ['MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_FLOW_IN', 'true', '7', 'xtc_cfg_select_option(array(\'true\', \'false\'), '],
-                ['MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_SHOW_STOCK', 'true', '8', 'xtc_cfg_select_option(array(\'true\', \'false\'), '],
-                ['MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL', '2', '21', ''],
-                ['MODULE_TRAFFIC_LIGHTS_STOCK_GREEN', '5', '22', ''],
-            ];
-
-            foreach ($configs as [$key, $value, $order, $func]) {
-                xtc_db_query("
-                    INSERT INTO " . TABLE_CONFIGURATION . "
-                    (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added)
-                    VALUES ('{$key}', '{$value}', '{$group_id}', '{$order}', '{$func}', NOW())
-                ");
-            }
+            xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_STATUS', 'true',  '6', '1', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_LISTING', 'true',  '6', '2', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_LISTING_LIGHT', 'light',  '6', '3', 'xtc_cfg_select_option(array(\'light\', \'text\'), ', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_INFO', 'true',  '6', '4', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_INFO_LIGHT', 'light',  '6', '5', 'xtc_cfg_select_option(array(\'light\', \'text\'), ', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES', 'true',  '6', '6', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_FLOW_IN', 'true',  '6', '7', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_ATTRIBUTES_SHOW_STOCK', 'true',  '6', '8', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_STOCK_RED_YELL', '2',  '6', '21', '', now())");
+			xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_TRAFFIC_LIGHTS_STOCK_GREEN', '5',  '6', '22', '', now())");
         }
 
         public function remove(): void
